@@ -5,7 +5,6 @@ const { ethers } = require('hardhat')
 let Loan, loan, signers, payoffAmount, loanDuration, mutex = true
 describe('updateLoan function test', () => {
     beforeEach(async () => {
-
         if (mutex) {
             loanDuration = parseInt(Math.floor(Math.random() * 100))
             payoffAmount = parseInt(Math.floor(Math.random() * 100))
