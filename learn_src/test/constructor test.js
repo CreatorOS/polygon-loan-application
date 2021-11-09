@@ -18,7 +18,7 @@ describe('Loan constructor test', () => {
         loan = await Loan.deploy(
             signers[0].address,
             signers[1].address,
-            1,
+            payoffAmount,
             loanDuration)
     })
 
@@ -30,7 +30,7 @@ describe('Loan constructor test', () => {
             expect(await loan.borrower()).to.equal(signers[1].address)
         })
         it('payoffAmount is set', async () => {
-            expect(await loan.payoffAmount()).to.equal(1)
+            expect(await loan.payoffAmount()).to.equal(payoffAmount)
         })
         it('loan duration is set', async () => {
             expect(await loan.loanDuration()).to.equal(loanDuration)
