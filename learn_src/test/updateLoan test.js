@@ -3,8 +3,9 @@ const { expect } = require('chai')
 const { ethers } = require('hardhat')
 
 let Loan, loan, signers, payoffAmount, loanDuration, mutex = true
-describe('Loan constructor test', () => {
+describe('updateLoan function test', () => {
     beforeEach(async () => {
+
         if (mutex) {
             loanDuration = parseInt(Math.floor(Math.random() * 100))
             payoffAmount = parseInt(Math.floor(Math.random() * 100))
@@ -21,25 +22,15 @@ describe('Loan constructor test', () => {
             loanDuration)
     })
 
-    describe('constructor works and state fields are set', () => {
-        it('lender is set', async () => {
-            expect(await loan.lender()).to.equal(signers[0].address)
-        })
-        it('borrower is set', async () => {
-            expect(await loan.borrower()).to.equal(signers[1].address)
-        })
-        it('payoffAmount is set', async () => {
+    describe('updateLoan function works', async () => {
+        it('payoffAmount is updated', async () => {
+            await loan.updateLoan(payoffAmount, 0)
             expect(await loan.payoffAmount()).to.equal(payoffAmount)
         })
-        it('loanDuration is set', async () => {
+        it('loanDuration is updated', async () => {
+            await loan.updateLoan(0, loanDuration)
             expect(await loan.loanDuration()).to.equal(loanDuration)
         })
-        //ToDO: how to access block.timestamp
-        /*it('updatedDate is set', async () => {
-            expect(await loan.updatedDate()).to.equal(block.timestamp)
-        })
-        it('dueDate is set', async () => {
-            expect(await loan.dueDate()).to.equal(block.timestamp + loanDuration)
-        })*/
+        //ToDo: updated date?
     })
 })
