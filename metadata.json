@@ -1,6 +1,6 @@
 {
     "version": "1.0.0", 
-    "defaultFile": "contracts/Bank.sol", 
+    "defaultFile": "contracts/Loan.sol", 
     "environment": "solidity", 
     "setupCommands": [ 
         "npm i",
@@ -10,11 +10,12 @@
     "tests": [ 
         { "itShould": "Compile",  "command": "sh learn_tests/01.sh" },
         { "itShould": "Deploy to dummy blockchain",  "command": "sh learn_tests/02.sh" },
-        { "itShould": "Create a function",  "command": "sh learn_tests/03.sh" },
-        { "itShould": "Create a function that deposits incorrectly",  "command": "sh learn_tests/04.sh" },
-        { "itShould": "Send money to the Bank Contract correctly",  "command": "sh learn_tests/05.sh" },
-        { "itShould": "Get the balance",  "command": "sh learn_tests/06.sh" },
-        { "itShould": "Withdraw the balance",  "command": "sh learn_tests/07.sh" }
+        { "itShould": "populate Loan's state fields",  "command": "sh learn_tests/03.sh" },
+        { "itShould": "invoke Loan's updateLoanfunction",  "command": "sh learn_tests/04.sh" },
+        { "itShould": "invoke Loan's partPayement function",  "command": "sh learn_tests/05.sh" },
+        { "itShould": "invoke Loan's preClosure function",  "command": "sh learn_tests/06.sh" },
+        { "itShould": "populate LoanRequests's state fields",  "command": "sh learn_tests/07.sh" },
+        { "itShould": "invoke LoanRequest's lendMatic function",  "command": "sh learn_tests/08.sh" }
     ],
     "learnerAccessibleFileList": [
         "contracts/*"
