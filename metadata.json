@@ -9,13 +9,14 @@
     "compileCommand": "npx hardhat compile", 
     "tests": [ 
         { "itShould": "Compile",  "command": "sh learn_tests/01.sh" },
-        { "itShould": "Deploy to dummy blockchain",  "command": "sh learn_tests/02.sh" },
+        { "itShould": "Deploy Loan to dummy blockchain",  "command": "sh learn_tests/02.sh" },
         { "itShould": "populate Loan's state fields",  "command": "sh learn_tests/03.sh" },
         { "itShould": "invoke Loan's updateLoanfunction",  "command": "sh learn_tests/04.sh" },
         { "itShould": "invoke Loan's partPayement function",  "command": "sh learn_tests/05.sh" },
         { "itShould": "invoke Loan's preClosure function",  "command": "sh learn_tests/06.sh" },
-        { "itShould": "populate LoanRequests's state fields",  "command": "sh learn_tests/07.sh" },
-        { "itShould": "invoke LoanRequest's lendMatic function",  "command": "sh learn_tests/08.sh" }
+        { "itShould": "Deploy LoanRequest to dummy blockchain",  "command": "sh learn_tests/07.sh" },
+        { "itShould": "populate LoanRequests's state fields",  "command": "sh learn_tests/08.sh" },
+        { "itShould": "invoke LoanRequest's lendMatic function",  "command": "sh learn_tests/09.sh" }
     ],
     "learnerAccessibleFileList": [
         "contracts/*"
