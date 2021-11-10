@@ -10,8 +10,8 @@ do
     passed=$(($passed + 1)) 
   else 
     echo "Test failed $i" | cat >> output.txt
-    total=$(($total + 1)) 
   fi
+  total=$(($total + 1)) 
    
 done
 echo "========" | cat >> output.txt
