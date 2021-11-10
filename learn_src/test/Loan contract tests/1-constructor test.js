@@ -10,9 +10,7 @@ describe('Loan constructor test', () => {
             payoffAmount = parseInt(Math.floor(Math.random() * 100))
             mutex = false
         }
-        await ethers.getSigners().then(res => {
-            signers = res
-        })
+        signers = await ethers.getSigners()
         Loan = await ethers.getContractFactory('Loan')
         loan = await Loan.deploy(
             signers[0].address,
@@ -22,16 +20,16 @@ describe('Loan constructor test', () => {
     })
 
     describe('constructor works and state fields are set', () => {
-        it('lender is set', async () => {
+        it('sets lender', async () => {
             expect(await loan.lender()).to.equal(signers[0].address)
         })
-        it('borrower is set', async () => {
+        it('sets borrower', async () => {
             expect(await loan.borrower()).to.equal(signers[1].address)
         })
-        it('payoffAmount is set', async () => {
+        it('sets payoffAmount', async () => {
             expect(await loan.payoffAmount()).to.equal(payoffAmount)
         })
-        it('loanDuration is set', async () => {
+        it('sets loanDuration', async () => {
             expect(await loan.loanDuration()).to.equal(loanDuration)
         })
         //ToDO: how to access block.timestamp

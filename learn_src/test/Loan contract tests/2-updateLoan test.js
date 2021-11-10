@@ -10,9 +10,7 @@ describe('updateLoan function test', () => {
             payoffAmount = parseInt(Math.floor(Math.random() * 100))
             mutex = false
         }
-        await ethers.getSigners().then(res => {
-            signers = res
-        })
+        signers = await ethers.getSigners()
         Loan = await ethers.getContractFactory('Loan')
         loan = await Loan.deploy(
             signers[0].address,
@@ -22,11 +20,11 @@ describe('updateLoan function test', () => {
     })
 
     describe('updateLoan function works', async () => {
-        it('payoffAmount is updated', async () => {
+        it('updates payoffAmount', async () => {
             await loan.updateLoan(payoffAmount, 0)
             expect(await loan.payoffAmount()).to.equal(payoffAmount)
         })
-        it('loanDuration is updated', async () => {
+        it('updates loanDuration', async () => {
             await loan.updateLoan(0, loanDuration)
             expect(await loan.loanDuration()).to.equal(loanDuration)
         })

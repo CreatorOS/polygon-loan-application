@@ -10,9 +10,7 @@ describe('partPayment function test', () => {
             payoffAmount = parseInt(Math.floor(Math.random() * 100))
             mutex = false
         }
-        await ethers.getSigners().then(res => {
-            signers = res
-        })
+        signers = await ethers.getSigners()
         Loan = await ethers.getContractFactory('Loan')
         loan = await Loan.deploy(
             signers[0].address,
@@ -22,15 +20,15 @@ describe('partPayment function test', () => {
     })
 
     describe('partPayment function works', async () => {
-        it('payoffAmount is updated', async () => {
+        it('updates payoffAmount', async () => {
             await loan.partPayment(payoffAmount, 0)
             expect(await loan.payoffAmount()).to.equal(payoffAmount)
         })
-        it('loanDuration is updated', async () => {
+        it('updates loanDuration', async () => {
             await loan.partPayment(0, loanDuration)
             expect(await loan.loanDuration()).to.equal(loanDuration)
         })
-        it("lender's balance is updated", async () => {
+        it("updates lender's balance", async () => {
             const overrides = {
                 value: ethers.utils.parseEther("0.0001"), //sending 0.0001 ether
                 from: signers[2].address  
