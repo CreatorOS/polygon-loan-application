@@ -14,9 +14,11 @@ Test passed ./02.sh
       ✓ sets borrower
       ✓ sets payoffAmount
       ✓ sets loanDuration
+      ✓ sets updatedDate
+      ✓ sets dueDate
 
 
-  4 passing (728ms)
+  6 passing (944ms)
 
 Test passed ./03.sh
 ==== ./04.sh ====
@@ -24,11 +26,12 @@ Test passed ./03.sh
 
   updateLoan function test
     updateLoan function works
-      ✓ updates payoffAmount (43ms)
+      ✓ updates payoffAmount
       ✓ updates loanDuration
+      ✓ updates updatedDate
 
 
-  2 passing (802ms)
+  3 passing (636ms)
 
 Test passed ./04.sh
 ==== ./05.sh ====
@@ -36,12 +39,12 @@ Test passed ./04.sh
 
   partPayment function test
     partPayment function works
-      ✓ updates payoffAmount
+      ✓ updates payoffAmount (40ms)
       ✓ updates loanDuration
       ✓ updates lender's balance
 
 
-  3 passing (683ms)
+  3 passing (848ms)
 
 Test passed ./05.sh
 ==== ./06.sh ====
@@ -53,7 +56,7 @@ Test passed ./05.sh
       ✓ refunds the lender
 
 
-  2 passing (597ms)
+  2 passing (616ms)
 
 Test passed ./06.sh
 ==== ./07.sh ====
@@ -71,7 +74,7 @@ Test passed ./07.sh
       ✓ sets loanDuration
 
 
-  5 passing (789ms)
+  5 passing (982ms)
 
 Test passed ./08.sh
 ==== ./09.sh ====
@@ -79,11 +82,11 @@ Test passed ./08.sh
 
   lendMatic function test
     lendMatic function works
-      ✓ creates new Loan instance (49ms)
+      ✓ creates new Loan instance (46ms)
       ✓ funds the borrower
 
 
-  2 passing (676ms)
+  2 passing (691ms)
 
 Test passed ./09.sh
 ========
