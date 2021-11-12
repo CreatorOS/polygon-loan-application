@@ -32,12 +32,30 @@ describe('Loan constructor test', () => {
         it('sets loanDuration', async () => {
             expect(await loan.loanDuration()).to.equal(loanDuration)
         })
-        //ToDO: how to access block.timestamp
-        /*it('updatedDate is set', async () => {
-            expect(await loan.updatedDate()).to.equal(block.timestamp)
+        it('sets updatedDate', async () => {
+            let updDate = await loan.updatedDate()
+            let fqDate = loan.provider._fastQueryDate
+            fqDate = fqDate.toString()
+            updDate = updDate.toString()
+            for (var i = 0; i <= fqDate.length - updDate.length + 1; i++) {
+                updDate = updDate.concat('0')
+            }
+            updDate = parseInt(updDate)
+            fqDate = parseInt(fqDate)
+            expect(updDate).to.at.least(fqDate)
         })
-        it('dueDate is set', async () => {
-            expect(await loan.dueDate()).to.equal(block.timestamp + loanDuration)
-        })*/
+        it('sets dueDate', async () => {
+            let dDate = await loan.dueDate()
+            let fqDate = loan.provider._fastQueryDate
+            let lowerBoundDueDate = fqDate + loanDuration
+            dDate = dDate.toString()
+            lowerBoundDueDate = lowerBoundDueDate.toString()
+            for (var i = 0; i <= lowerBoundDueDate.length - dDate.length + 1; i++) {
+                dDate = dDate.concat('0')
+            }
+            dDate = parseInt(dDate)
+            lowerBoundDueDate = parseInt(lowerBoundDueDate)
+            expect(dDate).to.be.at.least(lowerBoundDueDate)
+        })
     })
 })

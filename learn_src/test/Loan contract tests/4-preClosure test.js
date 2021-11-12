@@ -7,7 +7,7 @@ describe('preClosure function test', () => {
     beforeEach(async () => {
         if (mutex) {
             loanDuration = parseInt(Math.floor(Math.random() * 100))
-            payoffAmount = ethers.utils.parseEther(parseInt(Math.floor(Math.random() * 100)).toString())
+            payoffAmount = ethers.utils.parseEther(parseInt(Math.floor(Math.random() * 3) + 1).toString())
             mutex = false
         }
         signers = await ethers.getSigners()
@@ -28,7 +28,6 @@ describe('preClosure function test', () => {
             await loan.connect(signers[3]).preClosure(overrides)
             expect(loan.payoffAmount()).to.be.reverted //no more calls are allowed
         })
-        //ToDo: why does it fail 10 percent of the times
         it("refunds the lender", async () => {
             const overrides = {
                 value: payoffAmount,

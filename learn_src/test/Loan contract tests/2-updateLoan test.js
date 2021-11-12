@@ -28,6 +28,18 @@ describe('updateLoan function test', () => {
             await loan.updateLoan(0, loanDuration)
             expect(await loan.loanDuration()).to.equal(loanDuration)
         })
-        //ToDo: updated date?
+        it('updates updatedDate', async () => {
+            await loan.updateLoan(payoffAmount, loanDuration)
+            let updDate = await loan.updatedDate()
+            let fqDate = loan.provider._fastQueryDate
+            fqDate = fqDate.toString()
+            updDate = updDate.toString()
+            for (var i = 0; i <= fqDate.length - updDate.length + 1; i++) {
+                updDate = updDate.concat('0')
+            }
+            updDate = parseInt(updDate)
+            fqDate = parseInt(fqDate)
+            expect(updDate).to.at.least(fqDate)
+        })
     })
 })
